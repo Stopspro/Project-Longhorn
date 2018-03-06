@@ -7,6 +7,7 @@
 extern crate rlibc;
 extern crate volatile;
 extern crate spin;
+extern crate num_cpus;
 
 #[macro_use]
 mod vga_buffer;
