@@ -17,8 +17,7 @@ pub extern fn rust_main() {
     // ATTENTION: we have a very small stack and no guard page
 
     vga_buffer::clear_screen();
-    println!("impOS")
-    printlt!("v0.0.1")
+    println!("impOS, v0.0.1")
 
     loop{}
 }
