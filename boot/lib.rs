@@ -8,6 +8,9 @@ extern crate rlibc;
 extern crate volatile;
 extern crate spin;
 extern crate multiboot2;
+#[macro_use]
+extern crate bitflags;
+extern crate x86_64;
 
 #[macro_use]
 mod vga_buffer;
@@ -18,7 +21,7 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     use memory::FrameAllocator;
 
     vga_buffer::clear_screen();
-    println!("atomOS, v0.1.0");
+    println!("Hello World{}", "!");
 
     let boot_info = unsafe{ multiboot2::load(multiboot_information_address) };
     let memory_map_tag = boot_info.memory_map_tag()
@@ -49,13 +52,6 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     let mut frame_allocator = memory::AreaFrameAllocator::new(
         kernel_start as usize, kernel_end as usize, multiboot_start,
         multiboot_end, memory_map_tag.memory_areas());
-
-    for i in 0.. {
-        if let None = frame_allocator.allocate_frame() {
-            println!("allocated {} frames", i);
-            break;
-        }
-    }
 
     loop{}
 }
