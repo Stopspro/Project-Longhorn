@@ -1,4 +1,3 @@
-![screenshot](200w_d.gif) 
 # atomOS
 The perfect operating system, designed to give you a blast of positive energy.
 
