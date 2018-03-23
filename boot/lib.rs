@@ -15,13 +15,16 @@ extern crate x86_64;
 #[macro_use]
 mod vga_buffer;
 mod memory;
+mod keyboard;
+mod file_system;
 
 #[no_mangle]
 pub extern fn rust_main(multiboot_information_address: usize) {
     use memory::FrameAllocator;
 
     vga_buffer::clear_screen();
-    println!("Hello World{}", "!");
+    let version = // needs to read version from a file
+    println!("atomOS, { }", version);
 
     let boot_info = unsafe{ multiboot2::load(multiboot_information_address) };
     let memory_map_tag = boot_info.memory_map_tag()
