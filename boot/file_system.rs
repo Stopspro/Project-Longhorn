@@ -1,3 +1,5 @@
+#![no_std]
+
 use std::fs;
 
 pub fn scan() { // runs a scan of all the files/packages installed.
