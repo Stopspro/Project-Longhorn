@@ -23,9 +23,11 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     use memory::FrameAllocator;
 
     vga_buffer::clear_screen();
-    let version = // needs to read version from a file
-    println!("atomOS, { }", version);
+    let version = String::from("v0.0.1");// needs to read version from a file
 
+    let command = 
+
+    println!("Memory/Paging Tables:")
     let boot_info = unsafe{ multiboot2::load(multiboot_information_address) };
     let memory_map_tag = boot_info.memory_map_tag()
         .expect("Memory map tag required");
@@ -55,8 +57,14 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     let mut frame_allocator = memory::AreaFrameAllocator::new(
         kernel_start as usize, kernel_end as usize, multiboot_start,
         multiboot_end, memory_map_tag.memory_areas());
-
-    loop{}
+    
+    println!("");
+    
+    // terminal time
+    println!("atomOS, { }", version);
+    loop {
+        
+    }
 }
 
 #[lang = "eh_personality"] extern fn eh_personality() {}
@@ -68,3 +76,16 @@ pub extern fn panic_fmt(fmt: core::fmt::Arguments, file: &'static str, line: u32
     println!("    {}", fmt);
     loop{}
 }
+
+// current ouput:
+// Memory/Paging:
+// a bunch of memory/paging stuff
+// atomOS, v0.1
+
+// desired output:
+// Memory/Paging:
+// a bunch of memory/paging stuff
+// Readying packages... Done
+// (big fancy atomOS sign made from /)
+// v0.1
+// >>>
