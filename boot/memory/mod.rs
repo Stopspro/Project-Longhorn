@@ -1,81 +1,101 @@
-#![feature(lang_items)]
-#![feature(const_fn)]
-#![feature(const_unique_new)]
-#![feature(unique)]
-#![no_std]
+pub use self::area_frame_allocator::AreaFrameAllocator;
+pub use self::paging::remap_the_kernel;
+use self::paging::PhysicalAddress;
+use multiboot2::BootInformation;
 
-extern crate rlibc;
-extern crate volatile;
-extern crate spin;
-extern crate multiboot2;
-#[macro_use]
-extern crate bitflags;
-extern crate x86_64;
+mod area_frame_allocator;
+pub mod heap_allocator;
+mod paging;
 
-#[macro_use]
-mod vga_buffer;
-mod memory;
-mod file_system;
+pub const PAGE_SIZE: usize = 4096;
 
-#[no_mangle]
-pub extern fn rust_main(multiboot_information_address: usize) {
-    use memory::FrameAllocator;
 
-    vga_buffer::clear_screen();
-    println!("Hello World{}", "!");
+pub fn init(boot_info: &BootInformation) {
+    assert_has_not_been_called!("memory::init must be called only once");
 
-    let boot_info = unsafe{ multiboot2::load(multiboot_information_address) };
-    let memory_map_tag = boot_info.memory_map_tag()
-        .expect("Memory map tag required");
-    let elf_sections_tag = boot_info.elf_sections_tag()
-        .expect("Elf sections tag required");
+    let memory_map_tag = boot_info.memory_map_tag().expect(
+        "Memory map tag required");
+    let elf_sections_tag = boot_info.elf_sections_tag().expect(
+        "Elf sections tag required");
 
-    let kernel_start = elf_sections_tag.sections().map(|s| s.addr)
-        .min().unwrap();
-    let kernel_end = elf_sections_tag.sections().map(|s| s.addr + s.size)
-        .max().unwrap();
-    let multiboot_start = multiboot_information_address;
-    let multiboot_end = multiboot_start + (boot_info.total_size as usize);
+    let kernel_start = elf_sections_tag.sections()
+        .filter(|s| s.is_allocated()).map(|s| s.addr).min().unwrap();
+    let kernel_end = elf_sections_tag.sections()
+        .filter(|s| s.is_allocated()).map(|s| s.addr + s.size).max()
+        .unwrap();
 
-    println!("kernel start: 0x{:x}, kernel end: 0x{:x}",
-        kernel_start, kernel_end);
-    println!("multiboot start: 0x{:x}, multiboot end: 0x{:x}",
-        multiboot_start, multiboot_end);
+    println!("kernel start: {:#x}, kernel end: {:#x}",
+             kernel_start,
+             kernel_end);
+    println!("multiboot start: {:#x}, multiboot end: {:#x}",
+             boot_info.start_address(),
+             boot_info.end_address());
 
-    let mut frame_allocator = memory::AreaFrameAllocator::new(
-        kernel_start as usize, kernel_end as usize, multiboot_start,
-        multiboot_end, memory_map_tag.memory_areas());
+    let mut frame_allocator = AreaFrameAllocator::new(
+        kernel_start as usize, kernel_end as usize,
+        boot_info.start_address(), boot_info.end_address(),
+        memory_map_tag.memory_areas());
 
-    enable_nxe_bit();
-    enable_write_protect_bit();
-    memory::remap_the_kernel(&mut frame_allocator, boot_info);
-    println!("It did not crash!");
+    let mut active_table = paging::remap_the_kernel(&mut frame_allocator,
+        boot_info);
 
-    loop {}
-}
+    use self::paging::Page;
+    use {HEAP_START, HEAP_SIZE};
 
-fn enable_nxe_bit() {
-    use x86_64::registers::msr::{IA32_EFER, rdmsr, wrmsr};
+    let heap_start_page = Page::containing_address(HEAP_START);
+    let heap_end_page = Page::containing_address(HEAP_START + HEAP_SIZE-1);
 
-    let nxe_bit = 1 << 11;
-    unsafe {
-        let efer = rdmsr(IA32_EFER);
-        wrmsr(IA32_EFER, efer | nxe_bit);
+    for page in Page::range_inclusive(heap_start_page, heap_end_page) {
+        active_table.map(page, paging::WRITABLE, &mut frame_allocator);
     }
 }
 
-fn enable_write_protect_bit() {
-    use x86_64::registers::control_regs::{cr0, cr0_write, Cr0};
-
-    unsafe { cr0_write(cr0() | Cr0::WRITE_PROTECT) };
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
+pub struct Frame {
+    number: usize,
 }
 
-#[lang = "eh_personality"] extern fn eh_personality() {}
+impl Frame {
+    fn containing_address(address: usize) -> Frame {
+        Frame{ number: address / PAGE_SIZE }
+    }
 
-#[lang = "panic_fmt"]
-#[no_mangle]
-pub extern fn panic_fmt(fmt: core::fmt::Arguments, file: &'static str, line: u32) -> ! {
-    println!("\n\nPANIC in {} at line {}:", file, line);
-    println!("    {}", fmt);
-    loop{}
+    fn start_address(&self) -> PhysicalAddress {
+        self.number * PAGE_SIZE
+    }
+
+    fn clone(&self) -> Frame {
+        Frame { number: self.number }
+    }
+
+    fn range_inclusive(start: Frame, end: Frame) -> FrameIter {
+        FrameIter {
+            start: start,
+            end: end,
+        }
+    }
+}
+
+struct FrameIter {
+    start: Frame,
+    end: Frame,
+}
+
+impl Iterator for FrameIter {
+    type Item = Frame;
+
+    fn next(&mut self) -> Option<Frame> {
+        if self.start <= self.end {
+            let frame = self.start.clone();
+            self.start.number += 1;
+            Some(frame)
+        } else {
+            None
+        }
+    }
+ }
+
+pub trait FrameAllocator {
+    fn allocate_frame(&mut self) -> Option<Frame>;
+    fn deallocate_frame(&mut self, frame: Frame);
 }
