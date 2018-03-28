@@ -11,6 +11,9 @@ extern crate multiboot2;
 #[macro_use]
 extern crate bitflags;
 extern crate x86_64;
+extern crate ion;
+extern crate neutron;
+extern crate electron;
 
 #[macro_use]
 mod vga_buffer;
