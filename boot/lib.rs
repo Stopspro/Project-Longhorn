@@ -15,8 +15,6 @@ extern crate x86_64;
 #[macro_use]
 mod vga_buffer;
 mod memory;
-mod keyboard;
-mod file_system;
 
 #[no_mangle]
 pub extern fn rust_main(multiboot_information_address: usize) {
@@ -62,8 +60,28 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     
     // terminal time
     println!("atomOS, { }", version);
-    loop {
-        
+    particle::main::shell();
+    
+    if ion == 1 {                   
+        println!("Loading bypassed, directly installing ion shell...")
+        ion::load::shell();
+        println!("Done. installing shell commands...")
+        ion::load::commands();
+        println!("Done. installing shell themes...")
+        ion::load::themes();
+        println!("ion installed.")
+        ion::shell::reboot();
+    }
+    
+        if neutron == 1 {         
+        println!("Loading bypassed, directly installing neutron shell...")
+        neutron::load::shell()
+        println!("Done. installing shell commands...")
+        neutron::load::commands();
+        println!("Done. installing shell themes...")
+        neutron::load::themes();
+        println!("ion installed.")
+        neutron::shell::reboot();
     }
 }
 
