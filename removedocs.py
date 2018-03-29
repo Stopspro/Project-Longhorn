@@ -23,3 +23,5 @@ def process():
     
   
   f.close()
+
+  process()
