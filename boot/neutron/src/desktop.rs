@@ -15,4 +15,12 @@ mod desktop {
   
   }
   
+  fn tabs() { // does tab management, allows multiple tabs for browsers
+    
+  }
+  
+  fn taskbar() { // is a taskbar for the bottom of the screen.
+    
+  }
+  
 }
