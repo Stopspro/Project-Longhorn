@@ -11,8 +11,8 @@ As developers, we know what it feels like when you find a neat project and it do
 # current packages:
 Core Packages:
  - ion, a shell. Comes with a standard shell and a set of commands.
- - neutron, a server distrobution. Control your workers or servers with ease.
- - electron, a desktop. Not (near) as lightweight as ion + atom, but still pretty small.
+ - electron, a server distrobution. Control your workers or servers with ease.
+ - neutron, a desktop. Not (near) as lightweight as ion + atom, but still pretty small.
  
 Extra Packages:
  - molecule, the smallest (and the best) text editor on the face of the Earth. Supposed to be a GNU Nano clone.
