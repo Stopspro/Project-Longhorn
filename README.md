@@ -15,7 +15,9 @@ Core Packages:
  - electron, a desktop. Not (near) as lightweight as ion + atom, but still pretty small.
  
 Extra Packages:
- - molecule, the smallest (and the best) text editor on the face of the Earth.
+ - molecule, the smallest (and the best) text editor on the face of the Earth. Supposed to be a GNU Nano clone.
+ - unicorn, a CPU emulator, used to test and run Assembly code.
+ - chess, a game of chess for your terminal.
  
 # atom is made with help from you
 We need help! I can't continue to work on this by myself. If you would like to contribute, email me at atomdevhydra@gmail.com. Please send me a message listing why you would like to help with atomOS, and then, if you get accepted (which you likely will), you'll get your own atomdev...@gmail.com! Nice!
