@@ -11,16 +11,19 @@ def process():
        rust = 'no'
        python = 'yes'
        #Python
-       if "//" not in line # if # is not in line
-       python = 'no'
-       assembly = 'yes'
+       if "//" not in line: # if # is not in line
+         python = 'no'
+         assembly = 'yes'
        #x86-64 Assembly
-         if ";" not in line # if ; is not in line
-         assembly = 'no'
+         if ";" not in line: # if ; is not in line
+           assembly = 'no'
+         
      
    if rust = 'yes':
+   
+   if python = 'yes':
       
-    
+   if assembly = 'yes':
   
   f.close()
 
