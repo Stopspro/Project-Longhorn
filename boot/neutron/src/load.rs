@@ -1,4 +1,4 @@
-mod load {
+mod load { // load does all the installing, desktop does the normal desktop actions.
   fn desktop() {
   
   }
