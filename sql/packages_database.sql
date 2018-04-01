@@ -4,12 +4,6 @@ CREATE DATABASE packagev_database;
 
 CREATE DATABASE packagecode_database;
 
-CREATE DATABASE ioncode_database;
-
-CREATE DATABASE electroncode_database;
-
-CREATE DATABASE neutroncode_database;
-
 USE packages_database;
 CREATE TABLE packages (
   package_id INT NOT NULL,
