@@ -14,6 +14,11 @@ extern crate x86_64;
 extern crate ion;
 extern crate neutron;
 extern crate electron;
+#[macro_use]
+extern crate horrorshow;
+
+use horrorshow::prelude::*;
+use horrorshow::doctype;
 
 #[macro_use]
 mod vga_buffer;
@@ -76,7 +81,7 @@ pub extern fn rust_main(multiboot_information_address: usize) {
         ion::shell::reboot();
     }
     
-        if neutron == 1 {         
+    if neutron == 1 {         
         println!("Loading bypassed, directly installing neutron shell...")
         neutron::load::shell()
         println!("Done. installing shell commands...")
