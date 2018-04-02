@@ -14,11 +14,6 @@ extern crate x86_64;
 extern crate ion;
 extern crate neutron;
 extern crate electron;
-#[macro_use]
-extern crate horrorshow;
-
-use horrorshow::prelude::*;
-use horrorshow::doctype;
 
 #[macro_use]
 mod vga_buffer;
