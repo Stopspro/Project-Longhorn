@@ -5,6 +5,8 @@ atomOS is a lightweight, 64 bit, terminal OS thats perfect for everyone from dev
 
 atomOS is desgined to be flexible; since its coded in Rust and its open-source (obviously, you are on GitHub after all), you can change any part of atom to meet your needs.
 
+And, because the ion shell (which comes with the neutron and ion packages) is a bash clone, anyone familiar with Linux will feel right at home with atom.
+
 # on the topic of docs...
 As developers, we know what it feels like when you find a neat project and it doesn't have any docs explaining how it works. We hate that feeling, so we are trying to ensure that atomOS has plenty of docs on it. They can be found in just about every single source code file, so that if you are trying to make a fork, you'll know what everything does, making it easier for you.
 
