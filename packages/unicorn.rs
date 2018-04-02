@@ -1,5 +1,5 @@
 // this implementation of unicorn is a Rust program that can (and will) test and run Assembly code.
-extern crate unicorn
+extern crate unicorn;
 
 use unicorn::{Cpu, CpuX86};
 pub fn cpu() {
