@@ -1,4 +1,4 @@
-extern crate colored;
+#![no_std]
 
 fn chess() { // need to implement color code
   println!("Black or white? 1 for white and 2 for black.");
