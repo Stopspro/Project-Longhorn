@@ -14,6 +14,7 @@ extern crate x86_64;
 extern crate ion;
 extern crate neutron;
 extern crate electron;
+extern crate cpuio;
 
 use std::fs::File;
 use std::io::prelude::*;
