@@ -1,4 +1,6 @@
 #![no_std]
+extern crate postgres;
+extern crate cpuio;
 
 use std::fs;
 
@@ -19,10 +21,12 @@ pub fn virus() { // by default, the virus option should come disabled. By using 
   }
 }
 
-pub fn branch() { // shows a basic illustration of the file "web"
-  println!("")
-}
-
 pub fn update() { // updates the file
   
 }
+  
+pub fn block_encryption() {
+    
+}
+  
+  
