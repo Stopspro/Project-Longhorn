@@ -1,0 +1,1 @@
+!! this is how your data wil be stored. The encryption method and the decoder will not be included on GitHub for security reasons. !!
