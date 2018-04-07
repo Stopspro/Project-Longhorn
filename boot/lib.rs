@@ -16,8 +16,7 @@ extern crate neutron;
 extern crate electron;
 extern crate cpuio;
 
-use std::fs::File;
-use std::io::prelude::*;
+use cpuio::Port;
 
 #[macro_use]
 mod vga_buffer;
@@ -31,9 +30,7 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     let version = String::from("v0.0.1");// needs to read version from a file
 
     let command = 
-    let mut memory = File::open("config.txt")?;
-    let mut contents = String::new();
-    memory.read_to_string(&mut contents)?;
+    let mut memory = 1;
     
     if memory = 1 {
         println!("Memory/Paging Tables:")
@@ -72,8 +69,8 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     }
     // terminal time
     println!("atomOS, { }", version);
-    particle::main::shell();
-    
+    let mut keyboard: Port<u8> = unsafe { Port::new(0x60) };
+    let command = keyboard.read();
 }
 
 #[lang = "eh_personality"] extern fn eh_personality() {}
