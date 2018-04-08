@@ -21,6 +21,7 @@ use cpuio::Port;
 #[macro_use]
 mod vga_buffer;
 mod memory;
+mod scancode;
 
 #[no_mangle]
 pub extern fn rust_main(multiboot_information_address: usize) {
@@ -29,7 +30,6 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     vga_buffer::clear_screen();
     let version = String::from("v0.0.1");// needs to read version from a file
 
-    let command = 
     let mut memory = 1;
     
     if memory = 1 {
@@ -70,7 +70,7 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     // terminal time
     println!("atomOS, { }", version);
     let mut keyboard: Port<u8> = unsafe { Port::new(0x60) };
-    let command = keyboard.read();
+    let scancode = keyboard.read();
 }
 
 #[lang = "eh_personality"] extern fn eh_personality() {}
