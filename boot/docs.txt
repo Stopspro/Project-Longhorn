@@ -1,8 +1,0 @@
-do not edit; this is for use by the get_the_docs.rs program.
-
-atom = 0.1
-ion = 0.1
-electron = 0.0.1
-neutron = 0.0.1
-molecule = 0.1
-chess = 0.0.1
