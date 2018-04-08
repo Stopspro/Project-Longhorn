@@ -1,4 +1,5 @@
 #![no_std]
+extern crate cpuio;
 
 mod vga_buffer;
 
@@ -13,4 +14,6 @@ fn chess() { // need to implement color code
   println!("");
   println!("P P P P P P P P");
   println!("R K B X X B K R");
+  
+  let move = 
 }
