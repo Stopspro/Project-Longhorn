@@ -5,6 +5,7 @@ So, you want to be an atomOS developer? If so, you will be expected to have the 
  - A good text editor (see below)
  - Discord
  - Slack
+ - A screen recorder (for documenting errors)
  - Patience
  
 You will also be expected to have read the Code of Conduct.
@@ -19,8 +20,8 @@ All programmers should have a good text editor. Personally, I, Hydra, use GNU Na
 - Sublime Text
 - Emacs
 - Spacemacs, a mod of Emacs
-- Or be a true atomOS dev and use our very own molecule, an advanced GNU Nano clone written in Rust.
+- Or be a true atomOS dev and use our very own molecule, an advanced Vim/rasa clone written in Rust.
 
 # Current `Devs`:
  - Hydra (atomdevhydra@gmail.com), Project Founder, lead programmer
- - Stopspro (atomdevstopspro@gmail.com), Programmer
+ - Stopspro (atomdevstopspro@gmail.com), Website Developer
