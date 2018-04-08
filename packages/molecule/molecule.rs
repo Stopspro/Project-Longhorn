@@ -2,6 +2,8 @@ extern crate cpuio;
 
 use cpuio::Port;
 
+mod blockreader;
+
 pub fn editor() {
     println!("                                   ________    _______                      ________ 
 |          |   | | | |   |        |           |         |     |  |         |
