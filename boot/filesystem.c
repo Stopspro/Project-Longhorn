@@ -31,3 +31,39 @@ int open_file(const char *path) {
         return -1;
     }
 }
+
+int show_file(const char *path) {
+   
+    /* Initialize disk here. */
+   
+    /* Initialize file system header. */
+   
+    struct BMFSFile file;
+   
+    bmfs_file_init(&file);
+   
+    err = bmfs_open_file(&bmfs, &file, path);
+    if (err == BMFS_ENOENT) {
+        kprintf("Entry '%s' does not exist.\n", path);
+    } else if (err == BMFS_EISDIR) {
+        kprintf("Entry '%s' is a directory.\n", path);
+    } else if (err != 0) {
+        kprintf("Failed to open '%s'.\n", path);
+        return -1;
+    }
+   
+    bmfs_file_set_mode(&file, BMFS_MODE_READ);
+   
+    char buf[512];
+   
+    while (bmfs_file_eof(&file)) {
+   
+        bmfs_uint64 read_count = 0;
+   
+        err = bmfs_file_read(&file, buf, 512, &read_count);
+        if (err != 0)
+            break;
+   
+        my_print_function(buf, read_count);
+    }
+}
