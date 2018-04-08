@@ -1,3 +1,4 @@
+#![no_std]
 extern crate cpuio;
 
 use cpuio::Port;
@@ -5,11 +6,9 @@ use cpuio::Port;
 mod blockreader;
 
 pub fn editor() {
-    println!("                                   ________    _______                      ________ 
-|          |   | | | |   |        |           |         |     |  |         |
-| |      | |   |     |   |        |________   |         |     |  |         |________
-|  |   |   |   |     |   |        |           |         |     |  |         |      
-|    |     |   | | | |   |______  |________   |_______  | | | |  |______   |________  "); // do not edit formatting, it has been tested to work like this
+    let editorname = "molecule v0.1";
+    println!("{}", editorname);
+    println!("the perfect text editor.")
     
     let linenumber = 1; // this is the line that we are on
     let line = String::from("{}", linenumber); 
@@ -17,22 +16,29 @@ pub fn editor() {
     let mut keyboard: Port<u8> = unsafe { Port::new(0x60) };
     loop {
         if cmd = 1 { // new file on the block
-            let command = keyboard.read();
+            let line = String::from("~ ");
             let key = keyboard.read();
+            let skip = 1;
         }
         
-        if cmd = 2 { // open file
-            let command = keyboard.read();
-            let key = keyboard.read();
-        }
+        if skip = 0 {
+            if cmd = 2 { // open file
+                
+            }
         
-        if cmd = 3 { // save file to block
-            let command = keyboard.read();
-            let key = keyboard.read();
-        }
-        
-        if cmd = 4 { // exit editor
-            
-        }
+            if skip = 0 {
+                if cmd = 3 { // save file to block
+                    let filename = String::from("")
+                    let key = keyboard.read();
+                }
+                
+                if skip = 0 {
+                    if cmd = 4 { // exit editor
+                        break
+                    }
+                }
+            }
+        }    
     }
+    println!("Exiting editor.")
 }
