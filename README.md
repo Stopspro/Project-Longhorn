@@ -12,7 +12,7 @@ As developers, we know what it feels like when you find a neat project and it do
 
 # current packages:
 Core Packages:
- - ion, a shell. Comes with a standard shell and a set of commands.
+ - ion, a shell. Comes with a standard shell and a set of commands. !! has nothing to do with the Redox shell. I didn't know their shell was named ion until I looked at their GitHub profile. !!
  - electron, a server distrobution. Control your workers or servers with ease.
  - neutron, a desktop. Not (near) as lightweight as ion + atom, but still pretty small.
  
