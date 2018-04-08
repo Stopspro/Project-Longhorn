@@ -18,7 +18,6 @@ Core Packages:
  
 Extra Packages:
  - molecule, the smallest (and the best) text editor on the face of the Earth. Supposed to be a GNU Nano clone.
- - unicorn, a CPU emulator, used to test and run Assembly code.
  - chess, a game of chess for your terminal.
  
 # atom is made with help from you
