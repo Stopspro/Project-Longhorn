@@ -32,10 +32,8 @@ pub fn editor() {
                     let key = keyboard.read();
                 }
                 
-                if skip = 0 {
-                    if cmd = 4 { // exit editor
+                if cmd = 4 { // exit editor
                         break
-                    }
                 }
             }
         }    
