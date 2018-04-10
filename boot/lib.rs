@@ -11,9 +11,6 @@ extern crate multiboot2;
 #[macro_use]
 extern crate bitflags;
 extern crate x86_64;
-extern crate ion;
-extern crate neutron;
-extern crate electron;
 extern crate cpuio;
 
 use cpuio::Port;
@@ -21,7 +18,6 @@ use cpuio::Port;
 #[macro_use]
 mod vga_buffer;
 mod memory;
-mod scancode;
 
 #[no_mangle]
 pub extern fn rust_main(multiboot_information_address: usize) {
@@ -68,9 +64,11 @@ pub extern fn rust_main(multiboot_information_address: usize) {
         
     }
     // terminal time
-    println!("atomOS, { }", version);
+    println!("Project Longhorn, {}", version);
     let mut keyboard: Port<u8> = unsafe { Port::new(0x60) };
+    let command = String::new();
     let scancode = keyboard.read();
+    
 }
 
 #[lang = "eh_personality"] extern fn eh_personality() {}
@@ -82,16 +80,3 @@ pub extern fn panic_fmt(fmt: core::fmt::Arguments, file: &'static str, line: u32
     println!("    {}", fmt);
     loop{}
 }
-
-// current ouput:
-// Memory/Paging:
-// a bunch of memory/paging stuff
-// atomOS, v0.1
-
-// desired output:
-// Memory/Paging:
-// a bunch of memory/paging stuff
-// Readying packages... Done
-// (big fancy atomOS sign made from /)
-// v0.1
-// >>>
