@@ -68,7 +68,23 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     let mut keyboard: Port<u8> = unsafe { Port::new(0x60) };
     let command = String::new();
     let scancode = keyboard.read();
-    
+    if caps = 0 {
+        match scancode {
+            "1C" => prinln!("a")
+            "  " => println!("b")
+            "  " => println!("c")
+            "23" => println!("d")
+            " " => println!("e")
+            " " => println!("f")
+            " " => println!("g")
+            " " => println!("h")
+            " " => println!("i")
+            " " => println!("j")
+            " " => println!("k")
+            " " => println!("l")
+            " " => println!("m")
+        }
+    }
 }
 
 #[lang = "eh_personality"] extern fn eh_personality() {}
