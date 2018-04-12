@@ -18,6 +18,7 @@ use cpuio::Port;
 #[macro_use]
 mod vga_buffer;
 mod memory;
+mod comms;
 
 #[no_mangle]
 pub extern fn rust_main(multiboot_information_address: usize) {
@@ -108,7 +109,8 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 	        " " => let letter = "8";
 	        " " => let letter = "9";
 	        // special keys also use the letter variable, see above
-            " " => let letter = " ";
+            	" " => let letter = " ";
+		" " => let letter = "!";
 
         }
         
