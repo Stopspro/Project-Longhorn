@@ -38,3 +38,16 @@ pub fn editor() {
     }
     println!("Exiting editor.")
 }
+
+pub fn editorspecific() {
+    println!("scrypt v0.1");
+    println!("the perfect text editor.")
+    
+    // load filename from command
+    
+    let linenumber = 1; // this is the line that we are on
+    let line = String::from("{}", linenumber); 
+    let mut keyboard: Port<u8> = unsafe { Port::new(0x60) };
+    loop {
+        
+    }
