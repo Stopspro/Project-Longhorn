@@ -70,19 +70,84 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     let scancode = keyboard.read();
     if caps = 0 {
         match scancode {
-            "1C" => prinln!("a")
-            "  " => println!("b")
-            "  " => println!("c")
-            "23" => println!("d")
-            " " => println!("e")
-            " " => println!("f")
-            " " => println!("g")
-            " " => println!("h")
-            " " => println!("i")
-            " " => println!("j")
-            " " => println!("k")
-            " " => println!("l")
-            " " => println!("m")
+	        " " => let letter = "a";
+	        " " => let letter = "b";
+	        " " => let letter = "c";
+	        " " => let letter = "d";
+	        " " => let letter = "e";
+	        " " => let letter = "f";
+	        " " => let letter = "g";
+	        " " => let letter = "h";
+	        " " => let letter = "i";
+	        " " => let letter = "j";
+	        " " => let letter = "k";
+	        " " => let letter = "l";
+	        " " => let letter = "m";
+	        " " => let letter = "n";
+	        " " => let letter = "o";
+	        " " => let letter = "p";
+	        " " => let letter = "q";
+	        " " => let letter = "r";
+	        " " => let letter = "s";
+	        " " => let letter = "t";
+	        " " => let letter = "u";
+	        " " => let letter = "v";
+	        " " => let letter = "w";
+	        " " => let letter = "x";
+	        " " => let letter = "y";
+	        " " => let letter = "z";
+	        // numbers use the letter variable because it is faster
+	        " " => let letter = "0";
+	        " " => let letter = "1";
+	        " " => let letter = "2";
+	        " " => let letter = "3";
+	        " " => let letter = "4";
+	        " " => let letter = "5";
+	        " " => let letter = "6";
+	        " " => let letter = "7";
+	        " " => let letter = "8";
+	        " " => let letter = "9";
+	        // special keys also use the letter variable, see above
+            " " => let letter = " ";
+
+        }
+        
+        // bash commands
+        if command = 1010 {
+
+        }
+
+        if command = 10100 {
+
+        }
+    
+        if command = 1100 {
+
+        }
+
+        if command = 1111 {
+
+        }
+
+        // non bash stuff
+        if command = 1 {
+
+        }
+    
+        if command = 11 {
+
+        }
+
+        if command = 110 {
+    
+        }
+
+        if command = 2 {
+
+        }
+
+        if command = 20 {
+
         }
     }
 }
