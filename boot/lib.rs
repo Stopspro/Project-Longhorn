@@ -113,42 +113,39 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 		" " => let letter = "!";
 
         }
+	    
+	match command {
+		"scrypt" => let command = 1;
+		"comms" => let command = 2;
+	}
         
         // bash commands
-        if command = 1010 {
+        if command = 1010 { // shell script_default
 
         }
 
-        if command = 10100 {
+        if command = 10100 { // new shell script
 
         }
     
-        if command = 1100 {
+        if command = 1100 { // run
 
         }
 
-        if command = 1111 {
-
+        if command = 1111 { // info
+		println!("Project Longhorn v0.1");
+		println!("A Community-Made OS");
+		println!("------------------------");
+		println!("Developers: ");
+		println!("Hayden Curfman, project leader/ lead programmer");
         }
 
         // non bash stuff
-        if command = 1 {
+        if command = 1 { // scrypt
 
         }
     
-        if command = 11 {
-
-        }
-
-        if command = 110 {
-    
-        }
-
-        if command = 2 {
-
-        }
-
-        if command = 20 {
+        if command = 2 { // comms 
 
         }
     }
