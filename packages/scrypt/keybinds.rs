@@ -3,8 +3,6 @@ extern crate cpuio;
 
 use cpuio::
 
-mod scancodes;
-
 pub fn setbind() {
 
 }
