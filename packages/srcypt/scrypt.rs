@@ -3,10 +3,8 @@ extern crate cpuio;
 
 use cpuio::Port;
 
-mod blockreader;
-
 pub fn editor() {
-    let editorname = "molecule v0.1";
+    let editorname = "scrypt v0.1";
     println!("{}", editorname);
     println!("the perfect text editor.")
     
