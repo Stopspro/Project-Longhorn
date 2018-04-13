@@ -25,6 +25,8 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     use memory::FrameAllocator;
 
     vga_buffer::clear_screen();
+    config::shellscript();
+    config::scryptconfig();
         
     }
     // terminal time
