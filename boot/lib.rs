@@ -25,7 +25,6 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     use memory::FrameAllocator;
 
     vga_buffer::clear_screen();
-    let version = String::from("v0.0.1");// needs to read version from a file
         
     }
     // terminal time
