@@ -9,12 +9,6 @@ pub fn scryptconfig() {
   let conwin_maxchar = 15;
 }
 
-pub fn commsconfig() {
-  let mainip = String::from("IPV6");
-  let altip = String::from("IPV4");
-  let serverport = 8080;
-}
-
 pub fn shellscript() {
   let commands = String::from("bashmain");
   let bootup_programs = String::from("none")
