@@ -4,5 +4,9 @@ extern crate cpuio;
 use cpuio::
 
 pub fn setbind() {
+  
+}
 
+pub fn defaultbinds() {
+  
 }
