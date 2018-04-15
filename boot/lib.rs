@@ -105,27 +105,27 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 	    
         if caps = 1 {
             match scancode {
-                " " => let letter = "a"; // make code
-		        " " => let letter = "a";
-	            " " => let letter = "b";
-		        " " => let letter = "b"; 
-	            " " => let letter = "c";
-		        " " => let letter = "c";
-	            " " => let letter = "d";
-		        " " => let letter = "d";
-	            " " => let letter = "e";
-		        " " => let letter = "e";
-	            " " => let letter = "f";
-		        " " => let letter = "f";
-	            " " => let letter = "g";
-		        " " => let letter = "g";
-	            " " => let letter = "h";
-		        " " => let letter = "h";
-	            " " => let letter = "i";
-		        " " => let letter = "i";
-	            " " => let letter = "j";
-		        " " => let letter = "j";
-	            " " => let letter = "k";
+                " " => let letter = "A"; // make code
+		        " " => let letter = "A";
+	            " " => let letter = "B";
+		        " " => let letter = "B"; 
+	            " " => let letter = "C";
+		        " " => let letter = "C";
+	            " " => let letter = "D";
+		        " " => let letter = "D";
+	            " " => let letter = "E";
+		        " " => let letter = "E";
+	            " " => let letter = "F";
+		        " " => let letter = "F";
+	            " " => let letter = "G";
+		        " " => let letter = "G";
+	            " " => let letter = "H";
+		        " " => let letter = "H";
+	            " " => let letter = "I";
+		        " " => let letter = "I";
+	            " " => let letter = "J";
+		        " " => let letter = "J";
+	            " " => let letter = "K";
 		        " " => let letter = "k";
 	            " " => let letter = "l";
 		        " " => let letter = "l";
