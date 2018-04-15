@@ -1,3 +1,4 @@
+// just a Vim clone
 #![no_std]
 extern crate cpuio;
 
