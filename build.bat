@@ -1,5 +1,4 @@
 c:\
-c:\python27\python.exe c:\Longhorn\harold.py %*
 cd c:\Longhorn
 del "README.md"
 del "longhorn.jpg"
