@@ -34,7 +34,7 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     let mut keyboard: Port<u8> = unsafe { Port::new(0x60) };
     let command = String::new();
     let scancode = keyboard.read();
-    if caps = 0 {
+    if caps = 0 { // because the letter part is different between the two ifs the numbers and characters need to be repeated
         match scancode {
 	        " " => let letter = "a";
 	        " " => let letter = "b";
@@ -76,8 +76,53 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 	        // special keys also use the letter variable, see above
             	" " => let letter = " ";
 		" " => let letter = "!";
-
+	}
+	    
+    if caps = 1 {
+        match scancode {
+	        " " => let letter = "A";
+	        " " => let letter = "B";
+	        " " => let letter = "C";
+	        " " => let letter = "D";
+	        " " => let letter = "E";
+	        " " => let letter = "F";
+	        " " => let letter = "G";
+	        " " => let letter = "H";
+	        " " => let letter = "I";
+	        " " => let letter = "J";
+	        " " => let letter = "K";
+	        " " => let letter = "L";
+	        " " => let letter = "M";
+	        " " => let letter = "N";
+	        " " => let letter = "O";
+	        " " => let letter = "P";
+	        " " => let letter = "Q";
+	        " " => let letter = "R";
+	        " " => let letter = "S";
+	        " " => let letter = "T";
+	        " " => let letter = "U";
+	        " " => let letter = "V";
+	        " " => let letter = "W";
+	        " " => let letter = "X";
+	        " " => let letter = "Y";
+	        " " => let letter = "Z";
+	        // numbers use the letter variable because it is faster
+	        " " => let letter = "0";
+	        " " => let letter = "1";
+	        " " => let letter = "2";
+	        " " => let letter = "3";
+	        " " => let letter = "4";
+	        " " => let letter = "5";
+	        " " => let letter = "6";
+	        " " => let letter = "7";
+	        " " => let letter = "8";
+	        " " => let letter = "9";
+	        // special keys also use the letter variable, see above
+            	" " => let letter = " ";
+		" " => let letter = "!";
         }
+	    
+	command.push_str(letter)
 	    
 	match command {
 		"scrypt" => let command = 1;
@@ -107,7 +152,7 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 
         // non bash stuff
         if command = 1 { // scrypt
-
+		scrypt::editor();
         }
     
         if command = 2 { // comms 
