@@ -8,5 +8,7 @@ pub fn setbind() {
 }
 
 pub fn defaultbinds() {
-  
+  if visualmode = 1 {
+ 
+  }
 }
