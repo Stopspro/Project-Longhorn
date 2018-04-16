@@ -35,21 +35,21 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     let command = String::new();
     let scancode = keyboard.read();
     loop {
-        if caps = 0 { // because the letter part is different between the two ifs the numbers and characters need to be repeated
+        if caps = 0 {
             match scancode {
-    	        " " => let letter = "a"; // make code
-	    	    " " => let letter = "a"; // break code 
-	            " " => let letter = "b"; // repeat
-    		    " " => let letter = "b"; 
-	            " " => let letter = "c";
-    		    " " => let letter = "c";
-	            " " => let letter = "d";
-    		    " " => let letter = "d";
-	            " " => let letter = "e";
-    		    " " => let letter = "e";
-	            " " => let letter = "f";
-	    	    " " => let letter = "f";
-	            " " => let letter = "g";
+    	        "1C" => let letter = "a"; // make code
+	    	    "F01C" => let letter = "a"; // break code 
+	            "32" => let letter = "b"; // repeat
+    		    "F032" => let letter = "b"; 
+	            "21" => let letter = "c";
+    		    "F021" => let letter = "c";
+	            "23" => let letter = "d";
+    		    "F023" => let letter = "d";
+	            "24" => let letter = "e";
+    		    "F024" => let letter = "e";
+	            "2B" => let letter = "f";
+	    	    "F02B" => let letter = "f";
+	            "" => let letter = "g";
 	    	    " " => let letter = "g";
 	            " " => let letter = "h";
 	    	    " " => let letter = "h";
