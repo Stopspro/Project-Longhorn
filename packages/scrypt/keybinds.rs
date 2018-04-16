@@ -1,14 +1,17 @@
-// this is an optional package, but it is a highly recommended one
 extern crate cpuio;
 
-use cpuio::
+use cpuio::Port;
 
-pub fn setbind() {
-  
-}
-
-pub fn defaultbinds() {
+pub fn binds() {
   if visualmode = 1 {
- 
+    if letter = 1 { // A; no bind
+      break
+    }
+    
+    if 
+  }
+  
+  if visualmode = 0 {
+    println!("Error; visual mode not activated.")
   }
 }
