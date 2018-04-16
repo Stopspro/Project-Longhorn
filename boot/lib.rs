@@ -18,15 +18,12 @@ use cpuio::Port;
 #[macro_use]
 mod vga_buffer;
 mod memory;
-mod config;
 
 #[no_mangle]
 pub extern fn rust_main(multiboot_information_address: usize) {
     use memory::FrameAllocator;
 
     vga_buffer::clear_screen();
-    config::shellscript();
-    config::scryptconfig();
         
     }
     // terminal time
@@ -49,11 +46,11 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     		    "F024" => let letter = "e";
 	            "2B" => let letter = "f";
 	    	    "F02B" => let letter = "f";
-	            "" => let letter = "g";
-	    	    " " => let letter = "g";
-	            " " => let letter = "h";
-	    	    " " => let letter = "h";
-	            " " => let letter = "i";
+	            "34" => let letter = "g";
+	    	    "F034" => let letter = "g";
+	            "33" => let letter = "h";
+	    	    "F034" => let letter = "h";
+	            => let letter = "i";
 	    	    " " => let letter = "i";
 	            " " => let letter = "j";
 	            " " => let letter = "j";
