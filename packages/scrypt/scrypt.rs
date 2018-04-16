@@ -2,6 +2,8 @@
 #![no_std]
 extern crate cpuio;
 
+mod vga_buffer;
+
 use cpuio::Port;
 
 pub fn editor() {
@@ -17,6 +19,7 @@ pub fn editor() {
         if cmd = 1 { // new file on the block
             let line = String::from("~ ");
             let key = keyboard.read();
+            // coyping code from lib.rs
             let skip = 1;
         }
         
