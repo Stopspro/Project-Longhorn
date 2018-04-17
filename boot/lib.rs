@@ -87,6 +87,7 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 	            " " => let letter = "z-BREAK";
 		        " " => let letter = "z";
 	            " " => let letter = "0";
+                " " => let letter = "0-BREAK";
 	            " " => let letter = "1";
 	            " " => let letter = "2";
 	            " " => let letter = "3";
