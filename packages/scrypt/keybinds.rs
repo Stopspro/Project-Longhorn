@@ -9,33 +9,23 @@ pub fn binds() {
             
         }
         
-        if letter = 1 { // A; no bind
-            break
-        }
+        if letter = 1 { break; } 
     
-        if letter = 2 { // A; no bind
-            break
-        }
+        if letter = 2 { break; }
         
-        if letter = 3 { // A; no bind
-            break
-        }
+        if letter = 3 { break; }
         
-        if letter = 4 { // A; no bind
-            break
-        }
+        if letter = 4 { break; }
         
-        if letter = 5 {
-            break
-        }
+        if letter = 5 { break; }
+    
+        if letter = 6 { break; }
         
-        if letter = 6 {
-            break   
-        }
+        if letter = 7 { break; }
+            
+        if letter = 8 { break; }
         
-        if letter = 7 {
-            break   
-        }
+        if letter = 9 { break; }
     }
   
     if visualmode = 0 {
