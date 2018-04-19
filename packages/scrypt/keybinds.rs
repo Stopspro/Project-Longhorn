@@ -26,6 +26,10 @@ pub fn binds() {
         if letter = 8 { break; }
         
         if letter = 9 { break; }
+        
+        if letter = 10 { break; }
+        
+        if letter = 11 { break; }
     }
   
     if visualmode = 0 {
