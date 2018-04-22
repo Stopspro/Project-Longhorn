@@ -22,10 +22,7 @@ pub fn editor() {
             // coyping code from lib.rs
             
             if backspace = 1 {
-                #[link(name = "extern")]
-                extern {
-	                fn printb(); 
-                }
+
             }
         }
         
