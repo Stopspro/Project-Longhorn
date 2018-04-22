@@ -20,7 +20,13 @@ pub fn editor() {
             let line = String::from("~ ");
             let key = keyboard.read();
             // coyping code from lib.rs
-            let skip = 1;
+            
+            if backspace = 1 {
+                #[link(name = "extern")]
+                extern {
+	                fn printb(); 
+                }
+            }
         }
         
         if skip = 0 {
