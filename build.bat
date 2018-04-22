@@ -6,6 +6,8 @@ del "LICENSE"
 del "CODE_OF_CONDUCT.md"
 cd c:\Longhorn\boot\filesystem
 del "shell_emu.c"
+cd c:\Longhorn\packages\paint
+del "paint.asm"
 cd c:\Longhorn\boot\x86-64
 nasm -f elf64 multiboot_header.asm
 nasm -f elf64 boot.asm
