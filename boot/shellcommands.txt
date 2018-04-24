@@ -1,0 +1,13 @@
+Only for reference; last updated 4-24-2018.
+
+$ dir - list current directory (on startup it is the default path)
+$ dir (path) - change current directory
+$ run (filename) - compatible with Rust files ONLY, see DEVELOPING.md for more.
+$ scrypt - opens the scrypt editor
+$ scrypt new (filename) - opens the scrypt editor and creates a file (filename) in the current directory
+$ scrypt open (filename) - opens the scrypt editor and opens a file (filename) so long as it is in the current directory
+$ about - lists some credits and other things
+$ settings - allows you to change some settings
+$ fetch (package) - get a package 
+
+There are also a few Easter eggs. Be on the lookput for those! 
