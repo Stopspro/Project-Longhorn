@@ -4,10 +4,13 @@ del "README.md"
 del "longhorn.jpg"
 del "LICENSE"
 del "CODE_OF_CONDUCT.md"
-cd c:\Longhorn\boot\filesystem
-del "shell_emu.c"
+del "DEVELOPING.md"
+cd c:\Longhorn\boot
+del "shellcommands.txt"
 cd c:\Longhorn\packages\paint
 del "paint.asm"
+cd c:\Longhorn\BMFS
+git clone https://github.com/ReturnInfinity/BMFS
 cd c:\Longhorn\boot\x86-64
 nasm -f elf64 multiboot_header.asm
 nasm -f elf64 boot.asm
