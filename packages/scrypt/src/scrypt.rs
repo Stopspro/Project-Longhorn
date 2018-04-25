@@ -18,7 +18,7 @@ pub fn editor() {
     loop {
         if cmd = 1 { // new file on the block
             let line = String::from("~ ");
-            let key = keyboard.read();
+            
             // coyping code from lib.rs
             
             if backspace = 1 {
@@ -54,7 +54,6 @@ pub fn editorspecific() {
     
     let linenumber = 1; // this is the line that we are on
     let line = String::from("{}", linenumber); 
-    let mut keyboard: Port<u8> = unsafe { Port::new(0x60) };
     loop {
         
     }
