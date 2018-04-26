@@ -18,7 +18,6 @@ use cpuio::Port;
 #[macro_use]
 mod vga_buffer;
 mod memory;
-mod port;
 
 #[no_mangle]
 pub extern fn rust_main(multiboot_information_address: usize) {
@@ -38,13 +37,13 @@ pub extern fn rust_main(multiboot_information_address: usize) {
         	Port { port: port, phantom: PhantomData }
     	}
 
-    pub fn read(&mut self) -> T {
-        unsafe { T::port_in(self.port) }
-    }
+        pub fn read(&mut self) -> T {
+            unsafe { T::port_in(self.port) }
+        }
 
-    pub fn write(&mut self, value: T) {
-        unsafe { T::port_out(self.port, value); }
-    }
+        pub fn write(&mut self, value: T) {
+            unsafe { T::port_out(self.port, value); }
+        }
 
     pub trait InOut {
         unsafe fn port_in(port: u16) -> Self;
@@ -75,7 +74,7 @@ pub extern fn rust_main(multiboot_information_address: usize) {
         let scancode = keyboard.read();
         if caps = 0 {
             match scancode {
-    	        "1C" => let letter = "a"; // make code
+    	        "1C" => let letter = "a-BREAK"; // make code
 	    	    "F01C" => let letter = "a"; // break code 
 	            "32" => let letter = "b"; // repeat
     		    "F032" => let letter = "b-BREAK"; 
@@ -125,8 +124,8 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 		        " " => let letter = "x-BREAK";
 	            " " => let letter = "y";
 		        " " => let letter = "y-BREAK";
-	            " " => let letter = "z-BREAK";
-		        " " => let letter = "z";
+	            " " => let letter = "z";
+		        " " => let letter = "z-BREAK";
 	            " " => let letter = "0";
                 " " => let letter = "0-BREAK";
 	            " " => let letter = "1";
@@ -145,57 +144,57 @@ pub extern fn rust_main(multiboot_information_address: usize) {
         if caps = 1 {
             match scancode {
                 " " => let letter = "A"; // make code
-		        " " => let letter = "A";
-	            " " => let letter = "B";
-		        " " => let letter = "B"; 
+		        " " => let letter = "A-BREAK"; // break code
+	            " " => let letter = "B"; // repeat
+		        " " => let letter = "B-BREAK"; 
 	            " " => let letter = "C";
-		        " " => let letter = "C";
+		        " " => let letter = "C-BREAK";
 	            " " => let letter = "D";
-		        " " => let letter = "D";
+		        " " => let letter = "D-BREAK";
 	            " " => let letter = "E";
-		        " " => let letter = "E";
+		        " " => let letter = "E-BREAK";
 	            " " => let letter = "F";
-		        " " => let letter = "F";
+		        " " => let letter = "F-BREAK";
 	            " " => let letter = "G";
-		        " " => let letter = "G";
+		        " " => let letter = "G-BREAK";
 	            " " => let letter = "H";
-		        " " => let letter = "H";
+		        " " => let letter = "H-BREAK";
 	            " " => let letter = "I";
-		        " " => let letter = "I";
+		        " " => let letter = "I-BREAK";
 	            " " => let letter = "J";
-		        " " => let letter = "J";
+		        " " => let letter = "J-BREAK";
 	            " " => let letter = "K";
-		        " " => let letter = "k";
-	            " " => let letter = "l";
-		        " " => let letter = "l";
-	            " " => let letter = "m";
-		        " " => let letter = "m";
-	            " " => let letter = "n";
-		        " " => let letter = "n";
-	            " " => let letter = "o";
-		        " " => let letter = "o";
-	            " " => let letter = "p";
-		        " " => let letter = "p";
-	            " " => let letter = "q";
-		        " " => let letter = "q";
-	            " " => let letter = "r";
-		        " " => let letter = "r";
-	            " " => let letter = "s";
-		        " " => let letter = "s";
-	            " " => let letter = "t";
-		        " " => let letter = "t";
-	            " " => let letter = "u";
-		        " " => let letter = "u";
-	            " " => let letter = "v";
-		        " " => let letter = "v";
-	            " " => let letter = "w";
-		        " " => let letter = "w";
-	            " " => let letter = "x";
-		        " " => let letter = "x";
-	            " " => let letter = "y";
-		        " " => let letter = "y";
-	            " " => let letter = "z";
-		        " " => let letter = "z";
+		        " " => let letter = "K-BREAK";
+	            " " => let letter = "L";
+		        " " => let letter = "L";
+	            " " => let letter = "M";
+		        " " => let letter = "M";
+	            " " => let letter = "N";
+		        " " => let letter = "N";
+	            " " => let letter = "O";
+		        " " => let letter = "O";
+	            " " => let letter = "P";
+		        " " => let letter = "P";
+	            " " => let letter = "Q";
+		        " " => let letter = "Q";
+	            " " => let letter = "R";
+		        " " => let letter = "R";
+	            " " => let letter = "S";
+		        " " => let letter = "S";
+	            " " => let letter = "T";
+		        " " => let letter = "T";
+	            " " => let letter = "U";
+		        " " => let letter = "U";
+	            " " => let letter = "V";
+		        " " => let letter = "V";
+	            " " => let letter = "W";
+		        " " => let letter = "W";
+	            " " => let letter = "X";
+		        " " => let letter = "X";
+	            " " => let letter = "Y";
+		        " " => let letter = "Y";
+	            " " => let letter = "Z";
+		        " " => let letter = "Z";
 	            " " => let letter = "0";
 	            " " => let letter = "1";
 	            " " => let letter = "2";
