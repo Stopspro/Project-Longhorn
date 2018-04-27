@@ -9,6 +9,8 @@ cd c:\Longhorn\boot
 del "shellcommands.txt"
 cd c:\Longhorn\packages\paint
 del "paint.asm"
+cd c:\Longhorn\gui
+del "tempfile"
 cd c:\Longhorn\BMFS
 git clone https://github.com/ReturnInfinity/BMFS
 cd c:\Longhorn\boot\x86-64
