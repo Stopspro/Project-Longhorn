@@ -12,6 +12,7 @@ del "paint.asm"
 cd c:\Longhorn\BMFS
 git clone https://github.com/ReturnInfinity/BMFS
 cd c:\Longhorn\boot\GUI
+del "tempfile"
 git clone https://github.com/just-a-martian/C-desktopGUI
 cd c:\Longhorn\boot\x86-64
 nasm -f elf64 multiboot_header.asm
