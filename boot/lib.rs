@@ -76,9 +76,6 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     println!("Project Longhorn, {}", version);
     let command = String::new();
     loop {
-        match scancode {
-	
-	}
         if caps = 0 {
             match scancode {
     	        "1C" => let letter = "a-BREAK"; // make code
@@ -197,21 +194,21 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 	            " " => let letter = "U";
 		        " " => let letter = "U-BREAK";
 	            " " => let letter = "V";
-		        " " => let letter = "V";
+		        " " => let letter = "V-BREAK";
 	            " " => let letter = "W";
-		        " " => let letter = "W";
+		        " " => let letter = "W-BREAK";
 	            " " => let letter = "X";
-		        " " => let letter = "X";
+		        " " => let letter = "X-BREAK";
 	            " " => let letter = "Y";
-		        " " => let letter = "Y";
+		        " " => let letter = "Y-BREAK";
 	            " " => let letter = "Z";
-		        " " => let letter = "Z";
+		        " " => let letter = "Z-BREAK";
 	            " " => let letter = "0";
-	            " " => let letter = "1";
+	            " " => let letter = "1-BREAK";
 	            " " => let letter = "2";
-	            " " => let letter = "3";
+	            " " => let letter = "3-BREAK";
 	            " " => let letter = "4";
-	            " " => let letter = "5";
+	            " " => let letter = "5-BREAK";
 	            " " => let letter = "6";
 	            " " => let letter = "7";
 	            " " => let letter = "8";
@@ -224,24 +221,21 @@ pub extern fn rust_main(multiboot_information_address: usize) {
         command.push_str(letter)
 	    
         match command {
-	    "scrypt" => let command = 1;
-	    "comms" => let command = 2;
+	    "$ dir" => let command = 1;
+	    "$ scrypt" => let command = 4;
+		"$ about" => let command = 7;
+		"$ settings" => let command = 8;
 	    }  
         
-        // bash commands
-        if command = 1010 { // shell script_default
-
+		if command = 1 { // dir
+			print("{}", dir)
+		}
+			
+        if command = 4 { // scrypt
+			scrypt::editor();
         }
 
-        if command = 10100 { // new shell script
-
-        }
-    
-        if command = 1100 { // run
-
-        }
-
-        if command = 1111 { // info
+        if command = 7 { // about
             println!("Project Longhorn v0.1");
 		    println!("A Community-Made OS");
 		    println!("------------------------");
@@ -249,13 +243,8 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 		    println!("Hayden Curfman, project leader/ lead programmer");
         }
 
-        // non bash stuff
-        if command = 1 { // scrypt
-		    scrypt::editor();
-        }
-    
-        if command = 2 { // comms 
-
+        if command = 8 { // settings
+		    
         }
     }
 }
