@@ -74,10 +74,11 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     }
     // terminal time
     println!("Project Longhorn, {}", version);
-    let mut keyboard: Port<u8> = unsafe { Port::new(0x60) };
     let command = String::new();
     loop {
-        let scancode = keyboard.read();
+        match scancode {
+	
+	}
         if caps = 0 {
             match scancode {
     	        "1C" => let letter = "a-BREAK"; // make code
@@ -176,25 +177,25 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 	            " " => let letter = "K";
 		        " " => let letter = "K-BREAK";
 	            " " => let letter = "L";
-		        " " => let letter = "L";
+		        " " => let letter = "L-BREAK";
 	            " " => let letter = "M";
-		        " " => let letter = "M";
+		        " " => let letter = "M-BREAK";
 	            " " => let letter = "N";
-		        " " => let letter = "N";
+		        " " => let letter = "N-BREAK";
 	            " " => let letter = "O";
-		        " " => let letter = "O";
+		        " " => let letter = "O-BREAK";
 	            " " => let letter = "P";
-		        " " => let letter = "P";
+		        " " => let letter = "P-BREAK";
 	            " " => let letter = "Q";
-		        " " => let letter = "Q";
+		        " " => let letter = "Q-BREAK";
 	            " " => let letter = "R";
-		        " " => let letter = "R";
+		        " " => let letter = "R-BREAK";
 	            " " => let letter = "S";
-		        " " => let letter = "S";
+		        " " => let letter = "S-BREAK";
 	            " " => let letter = "T";
-		        " " => let letter = "T";
+		        " " => let letter = "T-BREAK";
 	            " " => let letter = "U";
-		        " " => let letter = "U";
+		        " " => let letter = "U-BREAK";
 	            " " => let letter = "V";
 		        " " => let letter = "V";
 	            " " => let letter = "W";
