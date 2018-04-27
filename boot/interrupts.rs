@@ -11,24 +11,29 @@ lazy_static! {
 pub fn init() {
     IDT.load();
 }
-extern "x86-interrupt" fn breakpoint_handler(
-    stack_frame: &mut ExceptionStackFrame)
+
+// our new double fault handler
+extern "x86-interrupt" fn double_fault_handler(
+    stack_frame: &mut ExceptionStackFrame, _error_code: u64)
 {
-    println!("EXCEPTION: BREAKPOINT\n{:#?}", stack_frame);
+    println!("\nEXCEPTION: DOUBLE FAULT\n{:#?}", stack_frame);
 }
 
 // Sample Usage
 // in src/lib.rs
 
-// pub extern "C" fn rust_main(...) {
+// #[no_mangle]
+// pub extern "C" fn rust_main(multiboot_information_address: usize) {
     // ...
-    // memory::init(boot_info);
-
     // initialize our IDT
     // interrupts::init();
 
-    // invoke a breakpoint exception
-    // x86_64::instructions::interrupts::int3();
+    // fn stack_overflow() {
+        // stack_overflow(); // for each recursion, the return address is pushed
+    // }
+
+    // trigger a stack overflow
+    // stack_overflow();
 
     // println!("It did not crash!");
     // loop {}
