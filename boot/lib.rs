@@ -22,6 +22,12 @@ mod memory;
 #[no_mangle]
 pub extern fn rust_main(multiboot_information_address: usize) {
     use memory::FrameAllocator;
+	
+    // set up guard page and map the heap pages
+    let mut memory_controller = memory::init(boot_info); // new return type
+
+    // initialize our IDT
+    interrupts::init(&mut memory_controller); // new argument	
 
     vga_buffer::clear_screen();
 	
@@ -129,9 +135,13 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 	            " " => let letter = "0";
                 " " => let letter = "0-BREAK";
 	            " " => let letter = "1";
-	            " " => let letter = "2";
+                " " => let letter = "1-BREAK";
+                " " => let letter = "2";
+	            " " => let letter = "2-BREAK";
 	            " " => let letter = "3";
+                " " => let letter = "3-BREAK";
 	            " " => let letter = "4";
+                " " => let letter = "4-BREAK";
 	            " " => let letter = "5";
 	            " " => let letter = "6";
 	            " " => let letter = "7";
