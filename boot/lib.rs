@@ -74,6 +74,7 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     }
     // terminal time
     println!("Project Longhorn, {}", version);
+	print!("Username: ")
     let command = String::new();
     loop {
         if caps = 0 {
@@ -216,7 +217,7 @@ pub extern fn rust_main(multiboot_information_address: usize) {
                 " " => let letter = " ";
 		        " " => let letter = "!";
             }
-	
+		}
 	
         command.push_str(letter)
 	    
@@ -228,12 +229,28 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 	    }  
         
 		if command = 1 { // dir
-			print("{}", dir)
+			print("{}", dir);
+		}
+		
+		if command = 2 { // make dir alias mkdir
+				
+		}
+			
+		if command = 3{ // clear
+			vga_buffer::clear_screen();
 		}
 			
         if command = 4 { // scrypt
 			scrypt::editor();
         }
+			
+		if command = 5 { // rmdir
+			
+		}
+			
+		if command = 6 { // logout
+			
+		}
 
         if command = 7 { // about
             println!("Project Longhorn v0.1");
@@ -246,8 +263,11 @@ pub extern fn rust_main(multiboot_information_address: usize) {
         if command = 8 { // settings
 		    
         }
+			
+		if command = 9 { // ip
+				
+		}
     }
-}
 
 #[lang = "eh_personality"] extern fn eh_personality() {}
 
