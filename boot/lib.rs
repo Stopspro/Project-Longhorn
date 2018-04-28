@@ -235,6 +235,7 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 	            " " => let letter = "4";
 	            " " => let letter = "5-BREAK";
 	            " " => let letter = "6";
+				" " => let letter = "6-BREAK";
 	            " " => let letter = "7";
 	            " " => let letter = "8";
 	            " " => let letter = "9";
@@ -242,14 +243,15 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 		        " " => let letter = "!";
             }
 		}
-	
+		
         command.push_str(letter)
 	    
         match command {
-	    "$ dir" => let command = 1;
-	    "$ scrypt" => let command = 4;
-		"$ about" => let command = 7;
-		"$ settings" => let command = 8;
+	    "dir" => let command = 1;
+		"mkdir" = let command = 2;
+	    "scrypt" => let command = 4;
+		"about" => let command = 7;
+		"settings" => let command = 8;
 	    }  
         
 		if command = 1 { // dir
@@ -290,6 +292,10 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 			
 		if command = 9 { // ip
 				
+		}
+			
+		if command = 0 {
+			println!("Error; command not recognized.")	
 		}
     }
 
