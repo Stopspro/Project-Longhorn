@@ -14,3 +14,4 @@ bitflags = "1.0.1"
 x86_64 = "0.1.2"
 smoltcp = "0.4.0"
 cpuio = "0.2.0"
+stm32-eth = { version = "*", features = ["target-stm32f429"] }
