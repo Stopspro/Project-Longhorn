@@ -12,8 +12,12 @@ extern crate multiboot2;
 extern crate bitflags;
 extern crate x86_64;
 extern crate cpuio;
+extern crate stm32f429 as target;
+extern crate stm32_eth;
 
 use cpuio::Port;
+use target::Peripherals;
+use stm32_eth::{Eth, RingEntry};
 
 #[macro_use]
 mod vga_buffer;
@@ -30,6 +34,26 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     interrupts::init(&mut memory_controller); // new argument	
 
     vga_buffer::clear_screen();
+    // Ethernet Setup
+    let p = Peripherals::take().unwrap();
+
+    // Setup pins and initialize clocks.
+    eth::setup(&p);
+    // Allocate the ring buffers
+    let mut rx_ring: [RingEntry<_>; 8] = Default::default();
+    let mut tx_ring: [RingEntry<_>; 2] = Default::default();
+    // Instantiate driver
+    let mut eth = Eth::new(
+        p.ETHERNET_MAC, p.ETHERNET_DMA,
+        &mut rx_ring[..], &mut tx_ring[..]
+    );
+    // If you have a handler, enable interrupts
+    eth.enable_interrupt(&mut cp.NVIC);
+
+
+    if let Ok(pkt) = eth.recv_next() {
+        // handle received pkt
+    }
 	
     // Interrupt Setup
     pub struct Port {
