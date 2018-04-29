@@ -1,6 +1,7 @@
 // just a Vim clone
 #![no_std]
 extern crate cpuio;
+// extern crate longhorn-essentials; WIP
 
 mod vga_buffer;
 
@@ -10,20 +11,23 @@ pub fn editor() {
     let editorname = "scrypt v0.1";
     println!("{}", editorname);
     println!("the perfect text editor.")
+    println!("")
     
     let linenumber = 1; // this is the line that we are on
     let line = String::from("{}", linenumber); 
     let key = String::new(); // this is the key that gets added to the string
-    let mut keyboard: Port<u8> = unsafe { Port::new(0x60) };
+    // this is the scrypt console, not the editing bit
     loop {
         if cmd = 1 { // new file on the block
-            let line = String::from("~ ");
-            
-            // coyping code from lib.rs
+            let line = String::new();
+            let mut filename = String::new();
+            // longhorn-essentials::Ports::PortSetup();
             
             if backspace = 1 {
-
+            
             }
+            
+            if charnum = 
         }
         
         if skip = 0 {
@@ -38,7 +42,7 @@ pub fn editor() {
                 }
                 
                 if cmd = 4 { // exit editor
-                        break
+                    break
                 }
             }
         }    
@@ -49,6 +53,7 @@ pub fn editor() {
 pub fn editorspecific() {
     println!("scrypt v0.1");
     println!("the perfect text editor.")
+    println!("")
     
     // load filename from command
     
