@@ -4,16 +4,17 @@
 #![feature(unique)]
 #![no_std]
 
+#[macro_use]
+extern crate bitflags;
 extern crate rlibc;
 extern crate volatile;
 extern crate spin;
 extern crate multiboot2;
-#[macro_use]
-extern crate bitflags;
 extern crate x86_64;
 extern crate cpuio;
 
 use cpuio::Port;
+use cpuio::UnsafePort;
 
 #[macro_use]
 mod vga_buffer;
