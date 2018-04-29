@@ -18,6 +18,7 @@ use cpuio::Port;
 #[macro_use]
 mod vga_buffer;
 mod memory;
+mod keyboard;
 
 #[no_mangle]
 pub extern fn rust_main(multiboot_information_address: usize) {
@@ -32,24 +33,24 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     vga_buffer::clear_screen();
 	
     // Interrupt Setup
-    pub struct Port {
+    pub struct UnsafePort<T: InOut> {
     	port: u16,
+    	phantom: PhantomData<T>,
 	}
 
-	#![feature(const_fn)]
-
-	impl<T: InOut> Port<T> {
-        pub const unsafe fn new(port: u16) -> Port<T> {
-        	Port { port: port, phantom: PhantomData }
+	impl<T: InOut> UnsafePort<T> {
+    	pub const unsafe fn new(port: u16) -> UnsafePort<T> {
+        	UnsafePort { port: port, phantom: PhantomData }
     	}
 
-        pub fn read(&mut self) -> T {
-            unsafe { T::port_in(self.port) }
-        }
+    	pub unsafe fn read(&mut self) -> T {
+        	T::port_in(self.port)
+    	}
 
-        pub fn write(&mut self, value: T) {
-            unsafe { T::port_out(self.port, value); }
-        }
+    	pub unsafe fn write(&mut self, value: T) {
+        	T::port_out(self.port, value);
+    	}
+	}	
 
     pub trait InOut {
         unsafe fn port_in(port: u16) -> Self;
