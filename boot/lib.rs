@@ -20,6 +20,7 @@ use cpuio::UnsafePort;
 mod vga_buffer;
 mod memory;
 mod keyboard;
+mod pic;
 
 #[no_mangle]
 pub extern fn rust_main(multiboot_information_address: usize) {
@@ -72,6 +73,12 @@ pub extern fn rust_main(multiboot_information_address: usize) {
         unsafe fn port_in(port: u16) -> u32 { inl(port) }
         unsafe fn port_out(port: u16, value: u32) { outl(value, port); }
     }
+	
+    static KEYBOARD: Mutex<Port<u8>> = Mutex::new(unsafe {
+        Port::new(0x60)
+    });
+	
+	let scancode = KEYBOARD.lock().read();
         
     }
     // terminal time
