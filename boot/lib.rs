@@ -77,8 +77,6 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     static KEYBOARD: Mutex<Port<u8>> = Mutex::new(unsafe {
         Port::new(0x60)
     });
-	
-	let scancode = KEYBOARD.lock().read();
         
     }
     // terminal time
@@ -86,6 +84,7 @@ pub extern fn rust_main(multiboot_information_address: usize) {
 	print!("Username: ")
     let command = String::new();
     loop {
+		let scancode = KEYBOARD.lock().read();
         if caps = 0 {
             match scancode {
     	        "1C" => let letter = "a-BREAK"; // make code
@@ -162,66 +161,67 @@ pub extern fn rust_main(multiboot_information_address: usize) {
         if caps = 1 {
             match scancode {
                 " " => let letter = "A"; // make code
-		        " " => let letter = "A-BREAK"; // break code
+		        " " => let letter = "BREAK"; // break code
 	            " " => let letter = "B"; // repeat
-		        " " => let letter = "B-BREAK"; 
+		        " " => let letter = "BREAK"; 
 	            " " => let letter = "C";
-		        " " => let letter = "C-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "D";
-		        " " => let letter = "D-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "E";
-		        " " => let letter = "E-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "F";
-		        " " => let letter = "F-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "G";
-		        " " => let letter = "G-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "H";
-		        " " => let letter = "H-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "I";
-		        " " => let letter = "I-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "J";
-		        " " => let letter = "J-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "K";
-		        " " => let letter = "K-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "L";
-		        " " => let letter = "L-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "M";
-		        " " => let letter = "M-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "N";
-		        " " => let letter = "N-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "O";
-		        " " => let letter = "O-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "P";
-		        " " => let letter = "P-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "Q";
-		        " " => let letter = "Q-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "R";
-		        " " => let letter = "R-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "S";
-		        " " => let letter = "S-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "T";
-		        " " => let letter = "T-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "U";
-		        " " => let letter = "U-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "V";
-		        " " => let letter = "V-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "W";
-		        " " => let letter = "W-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "X";
-		        " " => let letter = "X-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "Y";
-		        " " => let letter = "Y-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "Z";
-		        " " => let letter = "Z-BREAK";
+		        " " => let letter = "BREAK";
 	            " " => let letter = "0";
-	            " " => let letter = "1-BREAK";
+	            " " => let letter = "BREAK";
 	            " " => let letter = "2";
-	            " " => let letter = "3-BREAK";
+	            " " => let letter = "BREAK";
 	            " " => let letter = "4";
-	            " " => let letter = "5-BREAK";
+	            " " => let letter = "BREAK";
 	            " " => let letter = "6";
-				" " => let letter = "6-BREAK";
+				" " => let letter = "BREAK";
 	            " " => let letter = "7";
+				" " => let letter = "BREAK";
 	            " " => let letter = "8";
 	            " " => let letter = "9";
                 " " => let letter = " ";
@@ -232,11 +232,16 @@ pub extern fn rust_main(multiboot_information_address: usize) {
         command.push_str(letter)
 	    
         match command {
-	    "dir" => let command = 1;
-		"mkdir" = let command = 2;
-	    "scrypt" => let command = 4;
-		"about" => let command = 7;
-		"settings" => let command = 8;
+	    	"dir" => let command = 1;
+			"mkdir" => let command = 2;
+			"clear" => let command = 3;
+	    	"scrypt" => let command = 4;
+			"rmdir" => let command = 5;
+			"logout" => let command = 6;
+			"about" => let command = 7;
+			"settings" => let command = 8;
+			"ip" => let command = 9;
+			"logout" => let command =10;
 	    }  
         
 		if command = 1 { // dir
